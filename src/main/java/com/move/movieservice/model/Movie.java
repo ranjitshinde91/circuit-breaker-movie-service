@@ -4,6 +4,11 @@ public class Movie {
     private String name;
     private String releaseDate;
 
+    public Movie(String name, String releaseDate) {
+        this.name = name;
+        this.releaseDate = releaseDate;
+    }
+
     public String getName() {
         return name;
     }

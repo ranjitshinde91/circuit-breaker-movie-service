@@ -1,0 +1,20 @@
+logging.level.org.springframework.web: DEBUG
+management:
+  endpoint:
+    health:
+          show-details: always
+
+management.health.circuitbreakers.enabled: true
+
+resilience4j.circuitbreaker:
+  instances:
+    movie-recommendation-service:
+      registerHealthIndicator: true
+      slidingWindowType: TIME_BASED
+      slidingWindowSize: 120
+      failureRateThreshold: 50
+      slowCallRateThreshold: 50
+      slowCallDurationThreshold: 10000
+      minimumNumberOfCalls: 2
+      waitDurationInOpenState: 60s
+      permittedNumberOfCallsInHalfOpenState: 3
